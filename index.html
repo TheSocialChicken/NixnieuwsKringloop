@@ -11,7 +11,10 @@
   <link rel="canonical" href="https://nixnieuws.nl/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Limelight&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://www.instagram.com">
+  <link rel="preconnect" href="https://static.cdninstagram.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Limelight&amp;family=Inter:wght@300;400;500&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&amp;family=Inter:wght@300;400;500&amp;display=swap"></noscript>
   <style>
     /* ── Tokens ── */
     :root {
@@ -359,6 +362,28 @@
     <p>© 2026 Nix Nieuws Kringloop &amp; Vintage · Bussum</p>
   </footer>
 
-  <script async src="//www.instagram.com/embed.js"></script>
+  <script>
+    (function () {
+      var igSection = document.querySelector('[aria-label="Volg ons op Instagram"]');
+      if (!igSection || !('IntersectionObserver' in window)) {
+        // fallback: load immediately
+        var s = document.createElement('script');
+        s.src = '//www.instagram.com/embed.js';
+        s.async = true;
+        document.body.appendChild(s);
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries, obs) {
+        if (entries[0].isIntersecting) {
+          obs.disconnect();
+          var s = document.createElement('script');
+          s.src = '//www.instagram.com/embed.js';
+          s.async = true;
+          document.body.appendChild(s);
+        }
+      }, { rootMargin: '300px' });
+      observer.observe(igSection);
+    })();
+  </script>
 </body>
 </html>
