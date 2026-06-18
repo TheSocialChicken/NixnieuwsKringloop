@@ -150,7 +150,9 @@
       font-size: 15px;
       font-weight: 500;
       transition: background 0.15s, transform 0.1s;
-      min-height: 44px;
+      min-height: 56px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-primary { background: var(--brown); color: var(--white); }
     .btn-primary:hover  { background: var(--brown-mid); transform: translateY(-1px); }
@@ -219,8 +221,10 @@
       font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
-      min-height: 44px;
+      min-height: 56px;
       transition: opacity 0.15s, transform 0.1s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-instagram:hover  { opacity: 0.88; transform: translateY(-1px); }
     .btn-instagram:active { transform: translateY(0); }
@@ -238,6 +242,22 @@
 
     @media (prefers-reduced-motion: reduce) {
       .btn, .btn-instagram { transition: none; }
+    }
+
+    /* Prevent sticky hover transforms on touch devices */
+    @media (hover: none) {
+      .btn-primary:hover  { background: var(--brown); transform: none; }
+      .btn-ghost:hover    { background: transparent; transform: none; }
+      .btn-instagram:hover { opacity: 1; transform: none; }
+    }
+
+    /* Fix Instagram embed overflow on narrow phones (320px) */
+    .ig-posts .instagram-media { min-width: 0 !important; }
+
+    /* Tighter padding on very small screens */
+    @media (max-width: 380px) {
+      main { padding: 0 12px; }
+      section { padding: 32px 0; }
     }
   </style>
 </head>
