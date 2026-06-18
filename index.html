@@ -129,6 +129,15 @@
       text-align: center;
     }
 
+    /* ── Map embed ── */
+    .map-embed {
+      display: block;
+      width: 100%;
+      height: 220px;
+      border: 2px solid var(--gold);
+      margin-top: 16px;
+    }
+
     /* ── CTA buttons ── */
     .btn-group { display: flex; flex-direction: column; gap: 10px; }
     .btn {
@@ -267,6 +276,14 @@
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
+      <iframe
+        class="map-embed"
+        src="https://www.google.com/maps?q=Veerplein+27,+1404+DA+Bussum,+Nederland&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Locatie Nix Nieuws Kringloop &amp; Vintage"
+        aria-label="Google Maps kaart van Veerplein 27, Bussum"
+      ></iframe>
     </section>
 
     <!-- HOURS -->
